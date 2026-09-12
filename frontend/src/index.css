@@ -1,0 +1,1123 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Peugeot Land Official Cyan & White Color Theme */
+  --peugeot-cyan: #00a8e8;
+  --peugeot-cyan-dark: #008cc9;
+  --peugeot-cyan-light: #e0f2fe;
+  
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-banner: #00a8e8;
+  
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border-color: #cbd5e1;
+  --border-active: #00a8e8;
+  
+  --primary: #00a8e8;
+  --primary-hover: #008cc9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #f1f5f9;
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========================================================================= */
+/* PRINTABLE INVOICE MODAL SPECIFIC STYLING (ZERO OVERLAP GUARANTEED)        */
+/* ========================================================================= */
+.modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+}
+
+.modal-content-box {
+  background: #ffffff !important;
+  border-radius: 24px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  max-width: 980px !important;
+  width: 100% !important;
+  max-height: 92vh !important;
+  overflow-y: auto !important;
+  padding: 24px !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3) !important;
+  color: #0f172a !important;
+}
+
+.modal-header-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.modal-controls-card {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.modal-controls-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #00a8e8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hide number input arrows globally */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media (max-width: 768px) {
+  .modal-controls-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.printable-invoice-paper {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 20px !important;
+  padding: 40px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 13px !important;
+}
+
+.invoice-top-cyan-banner {
+  background: #00a8e8 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  padding: 10px 16px !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  border-radius: 6px !important;
+  margin-bottom: 24px !important;
+}
+
+.invoice-header-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  margin-bottom: 24px !important;
+}
+
+.invoice-info-text {
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  color: #334155 !important;
+}
+
+.invoice-info-text strong {
+  display: inline-block !important;
+  width: 75px !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+.invoice-title {
+  text-align: center !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  color: #0f172a !important;
+  margin-bottom: 20px !important;
+}
+
+.invoice-meta-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  padding: 12px 0 !important;
+  border-top: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  margin-bottom: 24px !important;
+  font-size: 12px !important;
+}
+
+.invoice-meta-item {
+  display: flex !important;
+  margin-bottom: 6px !important;
+}
+
+.invoice-meta-item strong {
+  width: 110px !important;
+  color: #475569 !important;
+  font-weight: 700 !important;
+}
+
+.invoice-meta-item span {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+.invoice-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: 1.5px solid #0f172a !important;
+  font-size: 12px !important;
+  margin-bottom: 28px !important;
+}
+
+.invoice-table th {
+  border: 1.5px solid #0f172a !important;
+  background: #f1f5f9 !important;
+  padding: 8px 10px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  text-transform: uppercase !important;
+  font-size: 11px !important;
+}
+
+.invoice-table td {
+  border: 1.5px solid #0f172a !important;
+  padding: 8px 10px !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+.invoice-signatures {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 48px !important;
+  text-align: center !important;
+  margin-top: 48px !important;
+  margin-bottom: 24px !important;
+}
+
+.invoice-sig-line {
+  border-bottom: 1.5px dotted #0f172a !important;
+  height: 32px !important;
+  margin-bottom: 6px !important;
+}
+
+.invoice-footer-notice {
+  text-align: center !important;
+  font-size: 11px !important;
+  color: #475569 !important;
+  border-top: 1px solid #e2e8f0 !important;
+  padding-top: 14px !important;
+}
+
+/* ========================================================================= */
+/* JOB OPENING FORM SPECIFIC STYLING                                         */
+/* ========================================================================= */
+.job-card-form-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding-bottom: 48px !important;
+}
+
+.job-header-box {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 24px !important;
+  padding: 28px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  margin-bottom: 32px !important;
+  width: 100% !important;
+}
+
+.job-section-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 24px !important;
+  padding: 28px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  margin-bottom: 32px !important;
+  width: 100% !important;
+}
+
+/* ========================================================================= */
+/* EXECUTIVE NAVBAR SPECIFIC STYLING                                         */
+/* ========================================================================= */
+.nav-bar-card {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  border: 1.5px solid #cbd5e1 !important;
+  margin-bottom: 28px !important;
+  width: 100% !important;
+}
+
+.nav-top-banner {
+  background: linear-gradient(135deg, #00a8e8 0%, #008cc9 100%) !important;
+  color: #ffffff !important;
+  padding: 12px 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.nav-controls-row {
+  background: #ffffff !important;
+  padding: 16px 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  border-top: 1px solid #f1f5f9 !important;
+  width: 100% !important;
+}
+
+.nav-pills-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #f8fafc !important;
+  padding: 6px !important;
+  border-radius: 16px !important;
+  border: 1.5px solid #e2e8f0 !important;
+  flex-wrap: wrap !important;
+}
+
+.nav-pill-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 18px !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  color: #475569 !important;
+  white-space: nowrap !important;
+}
+
+.nav-pill-btn:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.nav-pill-btn.active {
+  background: #00a8e8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 168, 232, 0.35) !important;
+}
+
+.nav-user-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: #f8fafc !important;
+  padding: 8px 16px !important;
+  border-radius: 14px !important;
+  border: 1.5px solid #e2e8f0 !important;
+}
+
+.nav-logout-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: #fff1f2 !important;
+  color: #e11d48 !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 8px 16px !important;
+  border-radius: 12px !important;
+  border: 1.5px solid #fecdd3 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.nav-logout-btn:hover {
+  background: #ffe4e6 !important;
+  border-color: #fda4af !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ========================================================================= */
+/* EXECUTIVE JOB CARD BOARD & TILES SPECIFIC STYLING                         */
+/* ========================================================================= */
+.job-list-header-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-left: 5px solid #00a8e8 !important;
+  border-radius: 20px !important;
+  padding: 24px 28px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  margin-bottom: 24px !important;
+}
+
+.job-tile-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 22px !important;
+  padding: 22px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.25s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.job-tile-card:hover {
+  border-color: #00a8e8 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 30px rgba(0, 168, 232, 0.12) !important;
+}
+
+.job-tile-header-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  margin-bottom: 14px !important;
+}
+
+.job-number-badge {
+  font-family: monospace !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  color: #00a8e8 !important;
+  background: #f0f9ff !important;
+  border: 1.5px solid #bae6fd !important;
+  padding: 4px 12px !important;
+  border-radius: 8px !important;
+}
+
+.job-tile-info-box {
+  background: #f8fafc !important;
+  border: 1px solid #f1f5f9 !important;
+  border-radius: 16px !important;
+  padding: 14px 16px !important;
+  margin-bottom: 16px !important;
+}
+
+.job-tile-invoice-banner {
+  background: #f0f9ff !important;
+  border: 1.5px solid #bae6fd !important;
+  border-radius: 14px !important;
+  padding: 12px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 18px !important;
+}
+
+.job-view-invoice-btn {
+  background: #00a8e8 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 10px 18px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(0, 168, 232, 0.3) !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.job-view-invoice-btn:hover {
+  background: #008cc9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(0, 168, 232, 0.4) !important;
+}
+
+.job-pay-confirm-btn {
+  background: #059669 !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 7px 14px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 3px 10px rgba(5, 150, 105, 0.3) !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+.job-pay-confirm-btn:hover {
+  background: #047857 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 5px 14px rgba(5, 150, 105, 0.4) !important;
+}
+
+/* ========================================================================= */
+/* EXECUTIVE MANAGER DASHBOARD SPECIFIC STYLING                              */
+/* ========================================================================= */
+.mgr-dashboard-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding-bottom: 48px !important;
+}
+
+.mgr-header-box {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 24px 28px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 24px !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+}
+
+.mgr-header-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+  background: #e0f2fe !important;
+  color: #00a8e8 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 6px !important;
+}
+
+.mgr-header-title {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+}
+
+.mgr-header-sub {
+  font-size: 12px !important;
+  color: #64748b !important;
+  font-weight: 500 !important;
+  margin-top: 2px !important;
+}
+
+.mgr-period-pills {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #f1f5f9 !important;
+  padding: 6px !important;
+  border-radius: 14px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.mgr-period-btn {
+  padding: 8px 18px !important;
+  border-radius: 10px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  color: #475569 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.mgr-period-btn.active {
+  background: #00a8e8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 168, 232, 0.35) !important;
+}
+
+.mgr-stats-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  gap: 20px !important;
+  margin-bottom: 24px !important;
+}
+
+.mgr-stat-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 22px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.2s ease !important;
+}
+
+.mgr-stat-card:hover {
+  border-color: #00a8e8 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 168, 232, 0.12) !important;
+}
+
+.mgr-stat-card-profit {
+  background: #f0fdf4 !important;
+  border-color: #86efac !important;
+}
+
+.mgr-stat-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 12px !important;
+}
+
+.mgr-stat-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.mgr-stat-icon-box {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mgr-stat-val-text {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  margin-bottom: 6px !important;
+}
+
+.mgr-stat-desc-text {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 600 !important;
+}
+
+.mgr-main-grid {
+  display: grid !important;
+  grid-template-columns: 1.6fr 1fr !important;
+  gap: 24px !important;
+}
+
+@media (max-width: 1024px) {
+  .mgr-main-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.mgr-panel-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 24px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+.mgr-panel-title {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.mgr-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 12px !important;
+}
+
+.mgr-table th {
+  text-align: left !important;
+  padding: 10px 12px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+}
+
+.mgr-table td {
+  padding: 12px !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  color: #334155 !important;
+}
+
+/* ========================================================================= */
+/* EXECUTIVE INVENTORY MANAGER SPECIFIC STYLING                              */
+/* ========================================================================= */
+.inv-page-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding-bottom: 48px !important;
+}
+
+.inv-header-box {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 24px 28px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 24px !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+}
+
+.inv-header-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 4px 12px !important;
+  border-radius: 9999px !important;
+  background: #e0f2fe !important;
+  color: #00a8e8 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 6px !important;
+}
+
+.inv-header-title {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+}
+
+.inv-header-sub {
+  font-size: 12px !important;
+  color: #64748b !important;
+  font-weight: 500 !important;
+  margin-top: 2px !important;
+}
+
+.inv-add-part-btn {
+  background: #00a8e8 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 12px 22px !important;
+  border-radius: 14px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 16px rgba(0, 168, 232, 0.35) !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.inv-add-part-btn:hover {
+  background: #008cc9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(0, 168, 232, 0.45) !important;
+}
+
+.inv-metrics-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  gap: 20px !important;
+  margin-bottom: 24px !important;
+}
+
+.inv-metric-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 22px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.2s ease !important;
+}
+
+.inv-metric-card-retail {
+  background: #f0f9ff !important;
+  border-color: #bae6fd !important;
+}
+
+.inv-metric-card-profit {
+  background: #f0fdf4 !important;
+  border-color: #86efac !important;
+}
+
+.inv-metric-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 8px !important;
+}
+
+.inv-metric-val {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  margin-bottom: 4px !important;
+}
+
+.inv-metric-sub {
+  font-size: 11px !important;
+  color: #64748b !important;
+  font-weight: 600 !important;
+}
+
+.inv-filter-bar {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 18px 24px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  margin-bottom: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+}
+
+.inv-table-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 20px !important;
+  padding: 24px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+.inv-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 12px !important;
+}
+
+.inv-table th {
+  text-align: left !important;
+  padding: 12px 14px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+  background: #f8fafc !important;
+}
+
+.inv-table td {
+  padding: 14px !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  color: #334155 !important;
+}
+
+/* ========================================================================= */
+/* EXECUTIVE LOGIN PAGE SPECIFIC STYLING                                     */
+/* ========================================================================= */
+.login-card-box {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 28px !important;
+  padding: 36px 32px !important;
+  max-width: 440px !important;
+  width: 100% !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+}
+
+.login-logo-header {
+  text-align: center !important;
+  margin-bottom: 24px !important;
+}
+
+.login-logo-frame {
+  background: #ffffff !important;
+  padding: 10px 16px !important;
+  border-radius: 16px !important;
+  display: inline-block !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+  margin-bottom: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.login-title-text {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 4px !important;
+}
+
+.login-subtitle-text {
+  font-size: 12px !important;
+  color: #64748b !important;
+  font-weight: 500 !important;
+}
+
+.login-field-group {
+  margin-bottom: 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.login-field-label {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  color: #475569 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  display: block !important;
+}
+
+.login-input-field {
+  width: 100% !important;
+  height: 46px !important;
+  background: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 14px !important;
+  padding: 0 16px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+}
+
+.login-input-field:focus {
+  border-color: #00a8e8 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.15) !important;
+}
+
+.login-remember-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-size: 12px !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  margin-bottom: 22px !important;
+}
+
+.login-submit-btn {
+  width: 100% !important;
+  height: 50px !important;
+  background: #00a8e8 !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  border-radius: 14px !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 20px rgba(0, 168, 232, 0.4) !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+}
+
+.login-submit-btn:hover {
+  background: #008cc9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 24px rgba(0, 168, 232, 0.5) !important;
+}
+
+.login-demo-section {
+  margin-top: 24px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid #f1f5f9 !important;
+}
+
+.login-demo-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  margin-top: 10px !important;
+}
+
+.login-demo-btn {
+  padding: 10px 14px !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  color: #0f172a !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-align: center !important;
+}
+
+.login-demo-btn:hover {
+  background: #00a8e8 !important;
+  color: #ffffff !important;
+  border-color: #00a8e8 !important;
+}
+
+/* 100% PERFECT A4 PRINTING STYLES */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 6mm 8mm 6mm 8mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide background application, navbars, dashboards, and modal control bars */
+  .no-print,
+  .modal-header-bar,
+  .modal-controls-card,
+  nav,
+  header,
+  footer {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .modal-backdrop {
+    position: static !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 999999 !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .modal-content-box {
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .printable-invoice-paper,
+  #printable-invoice,
+  #printable-quotation {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    color: #000000 !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .invoice-top-cyan-banner {
+    background: #00a8e8 !important;
+    color: #ffffff !important;
+    border-radius: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .invoice-table {
+    border: 1.5px solid #000000 !important;
+    width: 100% !important;
+    page-break-inside: auto !important;
+  }
+
+  .invoice-table tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+  }
+
+  .invoice-table th {
+    background: #f1f5f9 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
